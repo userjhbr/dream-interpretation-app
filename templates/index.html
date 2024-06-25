@@ -11,6 +11,7 @@
     <h1>Dream Interpretation App</h1>
     <form id="dreamForm">
         <textarea id="dreamText" placeholder="Describe your dream here..."></textarea><br>
+        <textarea id="feelings" placeholder="Enter your feelings during the dream (optional)..."></textarea><br> <!-- Campo opcional para sentimentos -->
         <button type="submit">Interpret Dream</button>
     </form>
     <h2>Interpretation:</h2>
@@ -20,12 +21,13 @@
         document.getElementById('dreamForm').addEventListener('submit', function(event) {
             event.preventDefault();
             const dreamText = document.getElementById('dreamText').value;
-            fetch('/interpret_dream', {
+            const feelings = document.getElementById('feelings').value; // Captura os sentimentos
+            fetch('/interpret_dream_with_feelings', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({ dream_text: dreamText })
+                body: JSON.stringify({ dream_text: dreamText, feelings: feelings })
             })
             .then(response => response.json())
             .then(data => {
