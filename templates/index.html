@@ -1,0 +1,37 @@
+<!-- Página inicial da aplicação -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dream Interpretation App</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Dream Interpretation App</h1>
+    <form id="dreamForm">
+        <textarea id="dreamText" placeholder="Describe your dream here..."></textarea><br>
+        <button type="submit">Interpret Dream</button>
+    </form>
+    <h2>Interpretation:</h2>
+    <p id="interpretation"></p>
+
+    <script>
+        document.getElementById('dreamForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const dreamText = document.getElementById('dreamText').value;
+            fetch('/interpret_dream', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ dream_text: dreamText })
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('interpretation').innerText = data.interpretation;
+            });
+        });
+    </script>
+</body>
+</html>
