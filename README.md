@@ -6,6 +6,7 @@ This is a web application for interpreting dreams based on Freudian and Jungian 
 
 - **User Authentication:** Users can create accounts and log in securely.
 - **Dream Interpretation:** Submit a dream description and receive interpretations based on Freud's and Jung's theories.
+- **Dream Interpretation with Feelings:** Submit a dream description along with feelings experienced during the dream to receive interpretations tailored to emotional context.
 - **Backend:** Built with Flask, SQLite for data storage.
 - **Frontend:** HTML/CSS/JavaScript for basic UI.
 
@@ -19,7 +20,8 @@ This is a web application for interpreting dreams based on Freudian and Jungian 
 
 1. Register or log in as a user.
 2. Enter your dream description.
-3. Receive interpretations based on Freudian and Jungian theories.
+3. Optionally, include feelings experienced during the dream for a more personalized interpretation.
+4. Receive interpretations based on Freudian and Jungian theories.
 
 ## Contributing
 
